@@ -14,6 +14,7 @@ nvm install node
 
 # Switch over to the latest version of nodejs
 nvm use node
+nvm alias default node
 
-# Install create-elm-app
-npm i -g create-elm-app
+# Install elm
+npm i -g elm
