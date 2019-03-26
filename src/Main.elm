@@ -12,16 +12,15 @@ main = Slides.app
         """
         # Exploring Elm's Compiler Error Messages
         
-        Nik Sharma
-        
-        Elm in the Spring 2019
+        ### Nik Sharma
+        ### Elm in the Spring 2019
+        ### https://github.com/sharma7n/exporing-elm-errors
         """
     , Slides.md
         """
         - My story of discovering a cool error message
         - An overview of all the kinds of errors in Elm
-        - One code example per error type
-        - Takeaways
+        - Examples of Elm code with various kinds of errors
         """
     , Slides.html <|
         (Html.div
@@ -45,18 +44,14 @@ main = Slides.app
         """
     , Slides.md
         """
-        Source: https://github.com/elm/compiler/blob/master/compiler/src/Reporting/Error.hs
-        ```
-        -- ALL POSSIBLE ERRORS
-
-
-        data Error
-          = Syntax Syntax.Error
-          | Canonicalize Canonicalize.Error
-          | Type L.Localizer [Type.Error]
-          | Main L.Localizer Main.Error
-          | Pattern [Pattern.Error]
-          | Docs Docs.Error
+        All possible errors:
+        
+        - Syntax
+        - Canonicalize
+        - Type
+        - Main
+        - Pattern
+        - Docs
         ```
         """
     , Slides.md
