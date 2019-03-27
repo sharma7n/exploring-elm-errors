@@ -6,8 +6,13 @@ import Slides.FragmentAnimation
 import Slides.SlideAnimation
 import Slides.Styles
 
-main = Slides.app
-    Slides.slidesDefaultOptions
+main = 
+    let
+        baseOptions = Slides.slidesDefaultOptions
+        options = baseOptions
+    in
+    Slides.app
+    options
     [ Slides.md
         """
         # Exploring Elm's Compiler Error Messages
@@ -42,6 +47,38 @@ main = Slides.app
         """
         bot.animechicago.com
         """
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src "assets/cyclic-definition.png"
+                ]
+                []
+            ])
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src "assets/koichi-notsure.png"
+                ]
+                []
+            ])
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src "assets/bad-recursion-doc.png"
+                ]
+                []
+            ])
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src "assets/luffy-amazed.png"
+                ]
+                []
+            ])
     , Slides.md
         """
         All possible errors:
@@ -52,7 +89,6 @@ main = Slides.app
         - Main
         - Pattern
         - Docs
-        ```
         """
     , Slides.md
         """
