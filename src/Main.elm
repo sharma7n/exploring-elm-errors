@@ -67,6 +67,14 @@ main =
         (Html.div
             []
             [ Html.img
+                [ Attributes.src "assets/cyclic-definition.png"
+                ]
+                []
+            ])
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
                 [ Attributes.src "assets/bad-recursion-doc.png"
                 ]
                 []
@@ -96,7 +104,69 @@ main =
         """
     , Slides.md
         """
+        A function definition with no implementation
+        ```elm
+        undefined : Int
+        ```
+        """
+    , Slides.md
+        """
+        Tabs!
+        ```elm
+        foo =
+        	5
+        ```
+        """
+    , Slides.md
+        """
+        Pattern matching on a float
+        ```elm
+        match f =
+            case f of
+                0.25 ->
+                    \"money\"
+                
+                _ ->
+                    \"no money\"
+        ```
+        """
+    , Slides.md
+        """
+        Reached the end of the file while parsing a shader...
+        ```elm
+        shader = [glsl|
+        ```
+        ... wait, what's a shader?
+        """
+    , Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src "assets/elm-glsl.png"
+                ]
+                []
+            ])
+    , Slides.md
+        """
         # Canonicalize Errors
+        """
+    , Slides.md
+        """
+        ```elm
+        questionDecoder =
+            D.map2 Question
+                (D.field "text" D.string)
+                (D.field "choices" (D.list choiceDecoder))
+        
+        
+        choiceDecoder =
+            D.map2 Choice
+                (D.field "text" D.string)
+                (D.field "result" treeDecoder)
+        
+        treeDecoder =
+            D.oneOf [ D.map Node questionDecoder , D.map Leaf recommendationDecoder ]
+        ```
         """
     , Slides.md
         """
