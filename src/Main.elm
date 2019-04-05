@@ -152,6 +152,28 @@ main =
         """
     , Slides.md
         """
+        Duplicate constructors for a custom type
+        ```elm
+        type Custom
+            = Foo
+            | Foo
+        ```
+        """
+    , Slides.md
+        """
+        Recursive type alias
+        ```elm
+        type alias Comment =
+          { message : String
+          , upvotes : Int
+          , downvotes : Int
+          , responses : List Comment
+          }
+        ```
+        """
+    , Slides.md
+        """
+        Recursive type declaration
         ```elm
         questionDecoder =
             D.map2 Question
@@ -174,7 +196,52 @@ main =
         """
     , Slides.md
         """
+        Inconsistent return types
+        ```elm
+        messedUpIf =
+            if True then
+                "fish"
+        
+            else
+                3.1415
+
+        ```
+        """
+    , Slides.md
+        """
+        Too few or too many arguments
+        ```elm
+        foo =
+            not || False
+        
+        foo =
+            not True "Hats"
+        ```
+        """
+    , Slides.md
+        """
         # Main Errors
+        """
+    , Slides.md
+        """
+        Main has the wrong type
+        ```elm
+        main =
+            0
+        ```
+        """
+    , Slides.md
+        """
+        Main is recursive
+        ```elm
+        main x =
+            case x of
+                False ->
+                    main True
+                
+                True ->
+                    {}
+        ```
         """
     , Slides.md
         """
@@ -182,6 +249,41 @@ main =
         """
     , Slides.md
         """
+        Incomplete match
+        ```elm
+        type Foo
+            = Bar
+            | Baz
+        
+        doThing x =
+            case x of
+                Bar ->
+                    5
+        ```
+        """
+    , Slides.md
+        """
+        Redundant match
+        ```elm
+        type Foo
+            = Bar
+            | Baz
+        
+        doThing x =
+            case x of
+                Bar ->
+                    5
+                
+                Baz ->
+                    6
+                
+                Baz ->
+                    6
+        ```
+        """
+    , Slides.md
+        """
         # Docs Errors
         """
+    
     ]
