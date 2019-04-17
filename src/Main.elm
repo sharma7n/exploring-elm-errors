@@ -285,5 +285,42 @@ main =
         """
         # Docs Errors
         """
-    
+    , Slides.md
+        """
+        1. Packages only
+        2. `elm make --docs`
+        """
+    , Slides.md
+        """
+        Not providing any docs!
+        """
+    , Slides.md
+        """
+        Implicit exposing
+        ```
+        module Foo exposing (..)
+        ```
+        """
+    , Slides.md
+        """
+        Mismatch between API and documentation
+        ```
+        module Foo exposing (bar, baz)
+
+        {-| Documentation
+
+        @docs bar, qux
+        -}
+        ```
+        """
+    , Slides.md
+        """
+        Symbol has no comment or no type annotation
+        ```
+        foo = ""foo""
+
+        bar : String
+        bar = ""bar""
+        ```
+        """
     ]
