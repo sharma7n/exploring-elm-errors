@@ -6,6 +6,16 @@ import Slides.FragmentAnimation
 import Slides.SlideAnimation
 import Slides.Styles
 
+image src =
+    Slides.html <|
+        (Html.div
+            []
+            [ Html.img
+                [ Attributes.src src ]
+                []
+            ]
+        )
+
 main = 
     let
         baseOptions = Slides.slidesDefaultOptions
@@ -19,7 +29,7 @@ main =
         
         ### Nik Sharma
         ### Elm in the Spring 2019
-        ### https://github.com/sharma7n/exporing-elm-errors
+        ### https://github.com/sharma7n/exploring-elm-errors
         """
     , Slides.md
         """
@@ -27,66 +37,17 @@ main =
         - An overview of all the kinds of errors in Elm
         - Examples of Elm code with various kinds of errors
         """
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img 
-                [ Attributes.src "assets/animechicago-crest.png"
-                ] 
-                []
-            ])
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/advice-bot.png"
-                ]
-                []
-            ])
+    , image "assets/animechicago-crest.png"
+    , image "assets/advice-bot.png"
     , Slides.md
         """
         bot.animechicago.com
         """
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/cyclic-definition.png"
-                ]
-                []
-            ])
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/koichi-notsure.png"
-                ]
-                []
-            ])
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/cyclic-definition.png"
-                ]
-                []
-            ])
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/bad-recursion-doc.png"
-                ]
-                []
-            ])
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/luffy-amazed.png"
-                ]
-                []
-            ])
+    , image "assets/cyclic-definition.png"
+    , image "assets/koichi-notsure.png"
+    , image "assets/cyclic-definition.png"
+    , image "assets/bad-recursion-doc.png"
+    , image "assets/luffy-amazed.png"
     , Slides.md
         """
         All possible errors:
@@ -100,227 +61,80 @@ main =
         """
     , Slides.md
         """
+        https://github.com/elm/error-message-catalog
+        """
+    , Slides.md
+        """
         # Syntax Errors
         """
+    , image "assets/type-without-definition.png"
+    , image "assets/tab.png"
+    , image "assets/float-in-pattern.png"
+    , image "assets/end-of-file-shader.png"
     , Slides.md
         """
-        A function definition with no implementation
-        ```elm
-        undefined : Int
-        ```
-        """
-    , Slides.md
-        """
-        Tabs!
-        ```elm
-        foo =
-        	5
-        ```
+        Cool.
         """
     , Slides.md
         """
-        Pattern matching on a float
-        ```elm
-        match f =
-            case f of
-                0.25 ->
-                    \"money\"
-                
-                _ ->
-                    \"no money\"
-        ```
+        Wait, what's a shader?
         """
-    , Slides.md
-        """
-        Reached the end of the file while parsing a shader...
-        ```elm
-        shader = [glsl|
-        ```
-        ... wait, what's a shader?
-        """
-    , Slides.html <|
-        (Html.div
-            []
-            [ Html.img
-                [ Attributes.src "assets/elm-glsl.png"
-                ]
-                []
-            ])
+    , image "assets/elm-glsl.png"
     , Slides.md
         """
         # Canonicalize Errors
         """
-    , Slides.md
-        """
-        Duplicate constructors for a custom type
-        ```elm
-        type Custom
-            = Foo
-            | Foo
-        ```
-        """
-    , Slides.md
-        """
-        Recursive type alias
-        ```elm
-        type alias Comment =
-          { message : String
-          , upvotes : Int
-          , downvotes : Int
-          , responses : List Comment
-          }
-        ```
-        """
-    , Slides.md
-        """
-        Recursive type declaration
-        ```elm
-        questionDecoder =
-            D.map2 Question
-                (D.field "text" D.string)
-                (D.field "choices" (D.list choiceDecoder))
-        
-        
-        choiceDecoder =
-            D.map2 Choice
-                (D.field "text" D.string)
-                (D.field "result" treeDecoder)
-        
-        treeDecoder =
-            D.oneOf [ D.map Node questionDecoder , D.map Leaf recommendationDecoder ]
-        ```
-        """
+    , image "assets/duplicate-ctor.png"
+    , image "assets/alias-recursive.png"
+    , image "assets/recursive-decl.png"
     , Slides.md
         """
         # Type Errors
         """
-    , Slides.md
-        """
-        Inconsistent return types
-        ```elm
-        messedUpIf =
-            if True then
-                "fish"
-        
-            else
-                3.1415
-
-        ```
-        """
-    , Slides.md
-        """
-        Too few or too many arguments
-        ```elm
-        foo =
-            not || False
-        
-        foo =
-            not True "Hats"
-        ```
-        """
+    , image "assets/if.png"
+    , image "assets/c-style-args.png"
+    , image "assets/sub-mismatch.png"
     , Slides.md
         """
         # Main Errors
         """
-    , Slides.md
-        """
-        Main has the wrong type
-        ```elm
-        main =
-            0
-        ```
-        """
-    , Slides.md
-        """
-        Main is recursive
-        ```elm
-        main x =
-            case x of
-                False ->
-                    main True
-                
-                True ->
-                    {}
-        ```
-        """
+    , image "assets/bad-type.png"
+    , image "assets/bad-cycle.png"
     , Slides.md
         """
         # Pattern Errors
         """
-    , Slides.md
-        """
-        Incomplete match
-        ```elm
-        type Foo
-            = Bar
-            | Baz
-        
-        doThing x =
-            case x of
-                Bar ->
-                    5
-        ```
-        """
-    , Slides.md
-        """
-        Redundant match
-        ```elm
-        type Foo
-            = Bar
-            | Baz
-        
-        doThing x =
-            case x of
-                Bar ->
-                    5
-                
-                Baz ->
-                    6
-                
-                Baz ->
-                    6
-        ```
-        """
+    , image "assets/incomplete-pattern.png"
+    , image "assets/redundant-pattern.png"
     , Slides.md
         """
         # Docs Errors
         """
     , Slides.md
         """
-        1. Packages only
+        Prerequisite
+
+        1. Packages only (attributes in `elm.json`)
         2. `elm make --docs`
         """
+    , image "assets/no-docs.png"
+    , image "assets/implicit-exposing.png"
+    , image "assets/mismatch.png"
+    , image "assets/missing-annotation-or-comment.png"
     , Slides.md
         """
-        Not providing any docs!
-        """
-    , Slides.md
-        """
-        Implicit exposing
-        ```
-        module Foo exposing (..)
-        ```
+        # Takeaways
         """
     , Slides.md
         """
-        Mismatch between API and documentation
-        ```
-        module Foo exposing (bar, baz)
-
-        {-| Documentation
-
-        @docs bar, qux
-        -}
-        ```
+        Reading code can be insightful
         """
     , Slides.md
         """
-        Symbol has no comment or no type annotation
-        ```
-        foo = ""foo""
-
-        bar : String
-        bar = ""bar""
-        ```
+        API design can be used to educate
+        """
+    , Slides.md
+        """
+        Thank you!
         """
     ]
