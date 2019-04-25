@@ -11,7 +11,7 @@ This is the talk "Exploring Elm's Compiler Error Messages" for the *Elm in the S
 
 ### Online
 
-https://sharma7n.github.io/exporing-elm-errors/
+https://sharma7n.github.io/exploring-elm-errors/
 
 ### Offline
 
