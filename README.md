@@ -4,6 +4,7 @@ This is the talk "Exploring Elm's Compiler Error Messages" for the *Elm in the S
 
 ## Credit where credit is due
 
+- `https://github.com/xarvh/elm-slides`: elm-slides package.
 - `https://github.com/elm/compiler`: Elm language compiler, including all Error types and error reporting code.
 - `https://github.com/elm/error-message-catalog`: Examples of error messages. Now forked at `https://github.com/sharma7n/error-message-catalog`.
 

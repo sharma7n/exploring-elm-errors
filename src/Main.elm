@@ -37,6 +37,12 @@ main =
         - An overview of all the kinds of errors in Elm
         - Examples of Elm code with various kinds of errors
         """
+    , Slides.md
+        """
+        - xarvh/elm-slides
+        - https://github.com/elm/compiler
+        - https://github.com/elm/error-message-catalog
+        """
     , image "assets/animechicago-crest.png"
     , image "assets/advice-bot.png"
     , Slides.md
@@ -58,10 +64,6 @@ main =
         - Main
         - Pattern
         - Docs
-        """
-    , Slides.md
-        """
-        https://github.com/elm/error-message-catalog
         """
     , Slides.md
         """
@@ -112,7 +114,7 @@ main =
         """
     , Slides.md
         """
-        Prerequisite
+        Prerequisites
 
         1. Packages only (attributes in `elm.json`)
         2. `elm make --docs`
